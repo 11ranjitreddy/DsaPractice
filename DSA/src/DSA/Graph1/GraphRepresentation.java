@@ -34,5 +34,32 @@ public class GraphRepresentation {
                 System.out.println(i+" "+nei);
             }
         }
+        bfs(list);
     }
+    public  static void bfs(ArrayList<Integer> list[]){
+        ArrayList<Integer> l=new ArrayList<>();
+        Queue<Integer> q=new LinkedList<>();
+        boolean visited[]=new boolean[list.length];
+
+        for(int i=0;i<list.length;i++){
+            if(!visited[i]){
+                q.add(i);
+
+                while (!q.isEmpty()){
+                    int curr=q.remove();
+                    l.add(curr);
+                    visited[curr]=true;
+
+                    for(int nei:list[curr]){
+                        if(!visited[nei]){
+                            q.add(nei);
+                            visited[nei]=true;
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println(l);
+    }
+
 }
