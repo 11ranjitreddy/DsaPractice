@@ -35,6 +35,7 @@ public class GraphRepresentation {
             }
         }
         bfs(list);
+        System.out.println(dfs(list));
     }
     public  static void bfs(ArrayList<Integer> list[]){
         ArrayList<Integer> l=new ArrayList<>();
@@ -60,6 +61,30 @@ public class GraphRepresentation {
             }
         }
         System.out.println(l);
+    }
+    public static ArrayList<Integer> dfs(ArrayList<Integer> list[]){
+
+        ArrayList<Integer> l=new ArrayList<>();
+        boolean visited[]=new boolean[list.length];
+
+        for(int i=0;i<list.length;i++){
+            if(!visited[i]){
+                dfsUtil(list,i,visited,l);
+            }
+        }
+
+        return l;
+    }
+    public  static void dfsUtil(ArrayList<Integer> list[],int curr,boolean visited[],ArrayList<Integer> l){
+         visited[curr]=true;
+
+         l.add(curr);
+
+         for(int a:list[curr]){
+             if(!visited[a]){
+                 dfsUtil(list,a,visited,l);
+             }
+         }
     }
 
 }
