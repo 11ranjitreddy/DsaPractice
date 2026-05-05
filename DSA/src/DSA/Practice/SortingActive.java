@@ -31,6 +31,14 @@ public class SortingActive {
             mul+=x-y*i;
         }
         System.out.println(mul);
+
+        int div=0;
+        for(int i=0;i<n;i++){
+            int x=aa[i][0];
+            int y=aa[i][1];
+            div+=x-y*i;
+        }
+        System.out.println(div);
     }
 
 }
