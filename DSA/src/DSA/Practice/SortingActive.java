@@ -23,6 +23,14 @@ public class SortingActive {
             sum+=x-y*i;
         }
         System.out.println(sum);
+
+        int mul=0;
+        for(int i=0;i<n;i++){
+            int x=aa[i][0];
+            int y=aa[i][1];
+            mul+=x-y*i;
+        }
+        System.out.println(mul);
     }
 
 }
