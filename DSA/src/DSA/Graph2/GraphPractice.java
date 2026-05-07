@@ -22,7 +22,8 @@ public class GraphPractice {
         }
         bfs(graph);
        System.out.println(dfs(graph));
-       System.out.println(haspath(graph,0,3));
+       System.out.println(haspath(graph,0,3,new boolean[v]));
+       System.out.println(hasCycle(graph));
     }
     public static void bfs(ArrayList<Integer>[] graph){
         ArrayList<Integer> list=new ArrayList<>();
@@ -65,7 +66,37 @@ public class GraphPractice {
             }
         }
     }
-    public static boolean haspath(ArrayList<Integer>[] graph,int src,int dest){
-
+    public static boolean haspath(ArrayList<Integer>[] graph,int src,int dest,boolean visited[]){
+        if(src==dest)return true;
+       for(int nei:graph[src]){
+           if(!visited[nei] && haspath(graph,nei,dest,visited))return true;
+       }
+        return  false;
     }
+    public static boolean hasCycle(ArrayList<Integer>[] graph){
+        boolean visited[]=new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!visited[i]){
+                if(dfsCycle(graph,i,visited,-1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean dfsCycle(ArrayList<Integer>[] graph,int curr,boolean visited[],int parent){
+        visited[curr]=true;
+
+        for(int nei:graph[curr]){
+            if(!visited[nei]){
+                if(dfsCycle(graph,nei,visited,curr)){
+                    return true;
+                }
+            }else if(nei!=parent){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

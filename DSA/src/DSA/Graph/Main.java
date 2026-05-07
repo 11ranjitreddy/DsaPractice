@@ -107,16 +107,6 @@ public class Main {
         }
         return false;
     }
-    public static boolean HashPath(ArrayList<Edge>[] graph,int src,int dest,boolean visited[]){
-        if(src==dest)return true;
-        visited[src]=true;
-        for(Edge nei:graph[src]){
-            if(!visited[nei.dest] && HashPath(graph,nei.dest,dest,visited)){
-                return true;
-            }
-        }
-        return false;
-    }
     public static boolean dfsCycle(ArrayList<Edge>[]graph,int curr,boolean visited[],int parent){
         visited[curr]=true;
         for(Edge nei:graph[curr]){
@@ -127,6 +117,17 @@ public class Main {
         }
         return false;
     }
+    public static boolean HashPath(ArrayList<Edge>[] graph,int src,int dest,boolean visited[]){
+        if(src==dest)return true;
+        visited[src]=true;
+        for(Edge nei:graph[src]){
+            if(!visited[nei.dest] && HashPath(graph,nei.dest,dest,visited)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean DetectCycle(ArrayList<Edge>[] graph){
         int n=graph.length;
         int state[]=new int[n];
