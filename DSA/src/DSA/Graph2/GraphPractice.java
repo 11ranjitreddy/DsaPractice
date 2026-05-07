@@ -24,6 +24,7 @@ public class GraphPractice {
        System.out.println(dfs(graph));
        System.out.println(haspath(graph,0,3,new boolean[v]));
        System.out.println(hasCycle(graph));
+       System.out.println(DirectGraphCycle(graph));
     }
     public static void bfs(ArrayList<Integer>[] graph){
         ArrayList<Integer> list=new ArrayList<>();
@@ -96,6 +97,32 @@ public class GraphPractice {
                 return true;
             }
         }
+        return false;
+    }
+    public static boolean DirectGraphCycle(ArrayList<Integer>[] graph){
+        int state[]=new int[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(state[i]==0){
+                if(DirectGraphHasCycle(graph,i,state)){
+                    return  true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean DirectGraphHasCycle(ArrayList<Integer>[] graph,int curr,int state[]){
+        state[curr]=1;
+        for(int nei:graph[curr]){
+            if(state[nei]==0){
+                if(DirectGraphHasCycle(graph,nei,state)){
+                    return true;
+                }
+            }
+            else if(state[nei]==1){
+                return true;
+            }
+        }
+        state[curr]=2;
         return false;
     }
 
