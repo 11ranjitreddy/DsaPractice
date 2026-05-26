@@ -25,6 +25,8 @@ public class GraphPractice {
        System.out.println(haspath(graph,0,3,new boolean[v]));
        System.out.println(hasCycle(graph));
        System.out.println(DirectGraphCycle(graph));
+       System.out.println(bipartitee(graph));
+
     }
     public static void bfs(ArrayList<Integer>[] graph){
         ArrayList<Integer> list=new ArrayList<>();
@@ -125,5 +127,36 @@ public class GraphPractice {
         state[curr]=2;
         return false;
     }
+    public static boolean bipartitee(ArrayList<Integer>[] graph){
+      Queue<Integer> q=new LinkedList<>();
+      int col[]=new int[graph.length];
+      for(int i=0;i<graph.length;i++)
+          col[i]=-1;
+
+      for(int i=0;i<graph.length;i++){
+          if(col[i]==-1){
+              col[i]=0;
+              q.add(i);
+
+              while (!q.isEmpty()){
+                  int curr=q.remove();
+                  for(int nei:graph[curr]){
+                      if(col[nei]==-1){
+                          int next=col[curr]==0?1:0;
+                          col[nei]=next;
+                      }else if(col[nei]==col[curr]){
+                          return false;
+                      }
+                  }
+              }
+          }
+      }
+      return true;
+    }
+    public static void Topoloay(ArrayList<Integer>[] graph){
+
+
+    }
+
 
 }
