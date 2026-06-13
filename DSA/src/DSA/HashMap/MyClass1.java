@@ -13,6 +13,8 @@ public class MyClass1 {
             int value=s.nextInt();
             map.put(key,value);
         }
-        System.out.print(map);
+       // System.out.print(map);
+        for(Integer k:map.keySet())
+            System.out.println(k+" "+map.get(k));
     }
 }
