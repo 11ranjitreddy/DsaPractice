@@ -58,7 +58,7 @@ public class BINARYTREE {
                 if (root.left == null) return root.right;
                 if (root.right == null) return root.left;
 
-                Node succ = minValue(root.left);
+                Node succ = minValue(root.right);
                 root.data = succ.data;
                 root.right = delete(root.right, succ.data);
 
