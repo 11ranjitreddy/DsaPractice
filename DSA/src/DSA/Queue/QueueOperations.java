@@ -11,6 +11,7 @@ public class QueueOperations {
             q.add(element);
         }
         q.size();
+        q.offer(3);
         q.peek();
         q.poll();
         q.isEmpty();
