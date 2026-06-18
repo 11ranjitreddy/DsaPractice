@@ -1,7 +1,8 @@
 package DSA.Greedy;
 
 import java.util.*;
-public class JobSequencing {
+public class
+JobSequencing {
     public static void main(String args[]){
         Scanner s=new Scanner(System.in);
         int n=s.nextInt();
