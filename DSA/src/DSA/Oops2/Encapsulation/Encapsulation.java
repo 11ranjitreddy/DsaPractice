@@ -1,4 +1,4 @@
-package DSA.Oops2;
+package DSA.Oops2.Encapsulation;
 
 import java.util.*;
 public class Encapsulation {
